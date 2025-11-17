@@ -34,16 +34,16 @@ class Person{
         this.age = age
     }
     getDetails():string{
-        return `'Name: ${this.name}, Age: ${this.age}'`;
+        return `'Name: ${this.name}, Age: ${this.age}';`;
     }
 }
 
 type P4value = { title: string; rating: number };
 const filterByRating = (value: P4value[]): P4value[] => {
-  const res: P4value[] = [];
+  let res: P4value[] = [];
   for (let i = 0; i < value.length; i++) {
     if (value[i].rating >= 4 && value[i].rating <= 5) {
-      res.push(value[i])
+      res = [...res, value[i]];
     }
   }
   return res;
@@ -56,10 +56,10 @@ type P5value = {
     isActive:boolean; 
 };
 const filterActiveUsers = (value: P5value[]): P5value[] => {
-  const res: P5value[] = [];
+  let res: P5value[] = [];
   for (let i = 0; i < value.length; i++) {
     if (typeof(value[i].isActive) === "boolean" && value[i].isActive === true) {
-      res.push(value[i])
+      res = [...res, value[i]];
     }
   }
   return res;
@@ -156,7 +156,6 @@ type P8value = {
   quantity: number;
   discount?: number;
 };
-
 const calculateTotalPrice =(valu: P8value[]):number => {
   let totalPrice = valu.map(item => 
     item.price * item.quantity * (1 - (item.discount ?? 0) / 100)

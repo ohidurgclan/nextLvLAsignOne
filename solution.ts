@@ -15,7 +15,7 @@ const formatValue = (value: P1value):P1value =>{
     }
 }
 
-type P2value = string | any[];
+type P2value = string | number[];
 function getLength(value: P2value): number {
   if (typeof value === "string") {
     return value.length;
